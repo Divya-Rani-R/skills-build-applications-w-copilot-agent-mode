@@ -6,7 +6,7 @@ const db = mongoose.connection;
 mongoose
   .connect(connectionString)
   .then(() => {
-    console.log('Connected to octofit_db');
+    console.log('Connected to octofit_db on MongoDB');
   })
   .catch((error) => {
     console.error('Error connecting to octofit_db:', error);
