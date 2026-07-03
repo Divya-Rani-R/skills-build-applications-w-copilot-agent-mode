@@ -9,6 +9,9 @@ import workoutsRouter from './routes/workouts';
 
 const app: Express = express();
 const PORT = process.env.PORT || 8000;
+const codespaceUrl = process.env.CODESPACE_NAME
+  ? `https://${process.env.CODESPACE_NAME}-8000.app.github.dev`
+  : 'http://localhost:8000';
 
 // Middleware
 app.use(express.json());
@@ -62,6 +65,7 @@ db.on('connected', () => {
   app.listen(PORT, () => {
     logApiConfig();
     console.log(`✅ Server is running on port ${PORT}`);
+    console.log(`Codespace URL: ${codespaceUrl}`);
   });
 });
 
