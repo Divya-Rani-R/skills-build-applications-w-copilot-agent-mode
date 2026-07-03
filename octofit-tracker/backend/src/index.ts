@@ -57,10 +57,12 @@ app.get('/', (req: Request, res: Response) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  logApiConfig();
-  console.log(`✅ Server is running on port ${PORT}`);
+// Wait for database connection before starting server
+db.on('connected', () => {
+  app.listen(PORT, () => {
+    logApiConfig();
+    console.log(`✅ Server is running on port ${PORT}`);
+  });
 });
 
 export default app;
